@@ -22,7 +22,7 @@ function Header(props) {
   // This is a child component.
   return (
     <header>
-      <h1>{props.name}'s Kitchen</h1>
+      <h1>🌮 {props.name}'s Kitchen 🍜</h1>
     </header>
   );
 }
@@ -75,12 +75,19 @@ function Footer({ year, developer }) {
 
 function App() {
   // This is the parent component.
-  const [status, setStatus] = useState("Open");
+  const [status, setStatus] = useState(true);
   console.log(status);
   return (
     <div>
       <Header name="Esther" />
       <Main dishes={dishObjects} />
+      <h4>The restaurant is currently {status ? "Open" : "Closed"}.</h4>
+      <div className="buttons">
+        <button onClick={() => setStatus(!status)}>
+          {status ? "Close" : "Open"} Restaurant
+        </button>
+      </div>
+
       <Footer year={new Date().getFullYear()} developer="Balazs Farago" />
     </div>
   );
