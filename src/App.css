@@ -1,0 +1,46 @@
+header {
+  display: flex;
+  justify-content: center;
+}
+
+.menubar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.welcome {
+  display: flex;
+  justify-content: center;
+}
+
+.photo {
+  display: flex;
+  justify-content: center;
+}
+
+h3 {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+h4 {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+p {
+  display: flex;
+  justify-content: center;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+}
