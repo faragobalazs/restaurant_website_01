@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useReducer, useEffect } from "react";
 import "./App.css";
 import chef from "./images/chef.png";
 
@@ -27,11 +27,16 @@ function Header(props) {
   );
 }
 
-function Main({ dishes }) {
+function Main({ dishes, openStatus, onStatus }) {
   return (
     <>
       <div className="welcome">
-        <h2>Welcome to this beautiful restaurant!</h2>
+        <button className="button1" onClick={() => onStatus(true)}>
+          I want to be open.
+        </button>
+        <h2>
+          Welcome to this beautiful restaurant! {openStatus ? "Open" : "Closed"}
+        </h2>
       </div>
       <main>
         <div className="menubar">
@@ -75,15 +80,23 @@ function Footer({ year, developer }) {
 
 function App() {
   // This is the parent component.
-  const [status, setStatus] = useState(true);
-  console.log(status);
+  //const [status, setStatus] = useState(true);
+  const [status, toggle] = useReducer((status) => !status, true);
+
+  useEffect(() => {
+    console.log(
+      `The restaurant is ${status ? "useEffect: open" : "useEffect: closed"}`
+    );
+  }, []);
+
+  //console.log(status);
   return (
     <div>
       <Header name="Esther" />
-      <Main dishes={dishObjects} />
+      <Main dishes={dishObjects} openStatus={status} onStatus={toggle} />
       <h4>The restaurant is currently {status ? "Open" : "Closed"}.</h4>
       <div className="buttons">
-        <button onClick={() => setStatus(!status)}>
+        <button onClick={/*() => setStatus(!status)*/ toggle}>
           {status ? "Close" : "Open"} Restaurant
         </button>
       </div>
